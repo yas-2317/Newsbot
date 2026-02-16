@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # JST 08:07 = UTC 23:07（前日）
-    - cron: "7 23 * * *"
+    - cron: "10 23 * * *"
 
 permissions:
   contents: write
@@ -47,6 +47,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Sanity check paths
+        run: |
+          ls -la
+          ls -la newsbot
+          ls -la newsbot/configs
 
           # seen が newsbot/seen_urls にある前提
           git add -A newsbot/seen_urls || true
