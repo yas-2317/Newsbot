@@ -25,10 +25,12 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies (repo root)
+      - name: Install dependencies
         run: |
+          pwd
+          ls -la
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r "$GITHUB_WORKSPACE/requirements.txt"
 
       - name: Run digests
         env:
