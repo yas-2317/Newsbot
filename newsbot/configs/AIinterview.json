@@ -1,0 +1,117 @@
+{
+  "name": "AIinterview",
+  "title": "【AI面接・採用×AI（HR Tech）ニュース】",
+
+  "feeds": [
+    "https://news.google.com/rss/search?q=AI%20interview%20hiring%20recruiting%20assessment&hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/search?q=video%20interview%20AI%20hiring%20assessment&hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/search?q=%E9%9D%A2%E6%8E%A5%20AI%20%E6%8E%A1%E7%94%A8%20%E9%81%B8%E8%80%83&hl=ja&gl=JP&ceid=JP:ja",
+    "https://news.google.com/rss/search?q=%E6%8E%A1%E7%94%A8%20AI%20%E9%81%A9%E6%80%A7%20%E8%A9%95%E4%BE%A1&hl=ja&gl=JP&ceid=JP:ja",
+
+    "https://news.google.com/rss/search?q=hirevue%20AI%20interview&hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/search?q=paradox%20ai%20recruiting&hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/search?q=Eight%20AI%20%E6%8E%A1%E7%94%A8&hl=ja&gl=JP&ceid=JP:ja",
+    "https://news.google.com/rss/search?q=HR%20Tech%20AI%20assessment%20funding&hl=en-US&gl=US&ceid=US:en",
+
+    "https://news.google.com/rss/search?q=employment%20law%20AI%20hiring%20bias%20EEOC&hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/search?q=NYC%201442%20automated%20employment%20decision%20tools&hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/search?q=EU%20AI%20Act%20employment%20hiring%20HR&hl=en-US&gl=US&ceid=US:en"
+  ],
+
+  "include_keywords": [
+    "AI interview", "interview AI", "video interview", "asynchronous interview",
+    "hiring", "recruiting", "recruitment", "talent acquisition",
+    "assessment", "psychometric", "aptitude", "fit", "job matching",
+    "structured interview", "rubric", "scoring", "rating",
+    "ATS", "HRIS", "workflow", "screening", "shortlist",
+    "conversational AI", "chatbot", "voice bot", "agent",
+    "LLM", "generative AI",
+    "bias", "fairness", "adverse impact", "audit", "transparency", "explainability",
+    "EEOC", "AEDT", "Local Law 1442", "employment law", "privacy", "GDPR",
+    "EU AI Act", "regulation",
+    "funding", "Series", "seed", "round", "raised", "acquisition", "partnership",
+
+    "AI面接", "面接AI", "録画面接", "動画面接", "採用AI", "採用",
+    "適性検査", "評価", "スクリーニング", "書類選考", "面接官支援",
+    "バイアス", "公平性", "監査", "透明性", "説明可能性",
+    "個人情報", "プライバシー", "規制", "法規制",
+    "資金調達", "シリーズ", "調達", "提携", "買収"
+  ],
+
+  "exclude_keywords": [
+    "求人", "採用情報", "募集要項", "インターン募集", "転職エージェント",
+    "セミナー", "ウェビナー", "イベント開催",
+    "PR", "広告", "スポンサー",
+    "（広告）", "[PR]"
+  ],
+
+  "max_items": 25,
+  "dedupe_days": 60,
+
+  "ai": {
+    "enabled": false,
+    "model": "gpt-5-mini",
+    "max_items_for_ai": 20
+  },
+
+  "delivery": {
+    "type": "slack",
+    "webhook_env": "SLACK_WEBHOOK_AIINTERVIEW"
+  },
+
+  "interest_name": "AI面接・採用×AI（HR Tech）",
+  "top_n": 7,
+  "max_items_total": 80,
+  "max_per_feed_default": 20,
+  "max_per_feed_gnews": 10,
+  "use_osc8": true,
+  "enable_slack": true,
+
+  "seen_dir": "seen_urls",
+  "seen_file": "ai_interview.json",
+  "seen_max": 7000,
+
+  "categories": [
+    "Product/Launch",
+    "Regulation/Risk",
+    "Research/Methods",
+    "Startup/Deals",
+    "Other"
+  ],
+
+  "category_rules": [
+    {
+      "category": "Regulation/Risk",
+      "keywords": [
+        "EEOC", "AEDT", "Local Law 1442", "audit", "bias", "fairness",
+        "adverse impact", "employment law", "regulation", "GDPR", "privacy",
+        "EU AI Act", "FTC", "compliance",
+        "法規制", "規制", "監査", "バイアス", "公平性", "個人情報", "プライバシー"
+      ]
+    },
+    {
+      "category": "Startup/Deals",
+      "keywords": [
+        "funding", "series", "seed", "round", "raised", "acquisition", "m&a",
+        "partnership", "deal", "investment",
+        "資金調達", "調達", "出資", "提携", "買収", "M&A"
+      ]
+    },
+    {
+      "category": "Research/Methods",
+      "keywords": [
+        "paper", "study", "benchmark", "validation", "psychometric",
+        "structured interview", "rubric", "scoring", "measurement",
+        "研究", "論文", "検証", "評価指標"
+      ]
+    },
+    {
+      "category": "Product/Launch",
+      "keywords": [
+        "launch", "release", "product", "feature", "ATS", "HRIS", "workflow",
+        "interview", "screening", "assessment", "chatbot", "voice",
+        "プロダクト", "リリース", "機能", "面接", "評価", "ATS"
+      ]
+    }
+  ]
+}

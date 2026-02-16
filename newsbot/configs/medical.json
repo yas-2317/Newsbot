@@ -1,0 +1,115 @@
+{
+  "name": "medical",
+  "title": "【医療関連ニュース】",
+
+  "feeds": [
+    "https://www.yakuji.co.jp/feed",
+    "https://www.pmda.go.jp/rss_015.xml",
+    "https://www.mhlw.go.jp/stf/news.rdf",
+    "https://www.mhlw.go.jp/stf/kinkyu.rdf",
+
+    "https://www.fiercehealthcare.com/rss/xml",
+    "https://medcitynews.com/feed/",
+    "http://feeds.feedburner.com/JMIRMedInform",
+    "http://ai.jmir.org/feed/atom",
+
+    "https://www.imdrf.org/news-events/news.xml",
+    "https://www.imdrf.org/documents.xml",
+
+    "https://news.google.com/rss/search?q=site%3Afda.gov%20medical%20device%20AI%20guidance&hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/search?q=FDA%20SaMD%20machine%20learning%20guidance&hl=en-US&gl=US&ceid=US:en"
+  ],
+
+  "include_keywords": [
+    "医療機器", "体外診断", "SaMD", "プログラム医療機器",
+    "製薬", "創薬", "臨床", "治験", "承認", "安全性", "副作用", "薬剤疫学", "RWD",
+    "AI", "機械学習", "データ", "画像", "診断",
+    "PMDA", "厚労省",
+
+    "AI", "machine learning", "deep learning", "LLM", "generative",
+    "medical device", "SaMD", "clinical trial", "drug discovery",
+    "real-world data", "RWD", "pharmacovigilance", "post-market",
+    "regulatory", "guidance", "FDA", "EMA", "PMDA",
+    "funding", "Series", "seed", "round", "raised", "acquisition", "partnership"
+  ],
+
+  "exclude_keywords": [
+    "セミナー", "研修", "開催", "求人", "広告", "PR",
+    "[調達]", "[採用]", "一般競争入札", "公募", "派遣", "ライセンス", "採用説明会"
+  ],
+
+  "max_items": 25,
+  "dedupe_days": 60,
+
+  "ai": {
+    "enabled": false,
+    "model": "gpt-5-mini",
+    "max_items_for_ai": 20
+  },
+
+  "delivery": {
+    "type": "slack",
+    "webhook_env": "SLACK_WEBHOOK_MEDICAL"
+  },
+
+  "interest_name": "製薬・医療機器×データサイエンス/AI活用",
+  "top_n": 7,
+  "max_items_total": 70,
+  "max_per_feed_default": 15,
+  "max_per_feed_gnews": 8,
+
+  "use_osc8": true,
+  "enable_slack": true,
+
+  "seen_file": "seen_urls.json",
+  "seen_max": 5000,
+
+  "categories": [
+    "Pharma×AI",
+    "Medtech/SaMD×AI",
+    "Startup/Deals",
+    "Regulation/Guidance",
+    "Research",
+    "Other"
+  ],
+
+  "category_rules": [
+    {
+      "category": "Regulation/Guidance",
+      "keywords": [
+        "pmda", "厚労省", "mhlw", "fda", "ema", "guidance", "regulatory",
+        "規制", "ガイダンス", "通知", "パブコメ", "審査", "安全性", "回収", "リコール",
+        "pharmacovigilance", "post-market", "市販後"
+      ]
+    },
+    {
+      "category": "Startup/Deals",
+      "keywords": [
+        "funding", "series", "seed", "round", "raised", "acquisition", "m&a", "merger",
+        "partnership", "deal",
+        "資金調達", "シリーズ", "調達", "出資", "提携", "買収", "m&a"
+      ]
+    },
+    {
+      "category": "Research",
+      "keywords": [
+        "jmir", "arxiv", "preprint", "paper", "study", "trial", "systematic review", "meta-analysis",
+        "論文", "研究", "検証", "レビュー", "解析", "ベンチマーク"
+      ]
+    },
+    {
+      "category": "Medtech/SaMD×AI",
+      "keywords": [
+        "medical device", "device", "samd", "ivd", "imaging", "radiology", "pathology", "diagnostic", "software",
+        "医療機器", "体外診断", "診断", "画像", "放射線", "病理", "プログラム医療機器", "ソフトウェア"
+      ]
+    },
+    {
+      "category": "Pharma×AI",
+      "keywords": [
+        "drug", "pharma", "biotech", "drug discovery", "clinical", "trial", "rwd", "real-world data", "adverse",
+        "製薬", "創薬", "バイオ", "臨床", "治験", "薬剤疫学", "rwd", "副作用"
+      ]
+    }
+  ]
+}
