@@ -36,14 +36,14 @@ jobs:
 
       - name: Run digests
         env:
-          SLACK_WEBHOOK_MEDICAL_URL: ${{ secrets.SLACK_WEBHOOK_MEDICAL_URL }}
-          SLACK_WEBHOOK_AIINTERVIEW_URL: ${{ secrets.SLACK_WEBHOOK_AIINTERVIEW_URL }}
+          SLACK_WEBHOOK_MEDICAL: ${{ secrets.SLACK_WEBHOOK_MEDICAL }}
+          SLACK_WEBHOOK_AIINTERVIEW: ${{ secrets.SLACK_WEBHOOK_AIINTERVIEW }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_TO: ${{ secrets.LINE_TO }}
         run: |
-          python newsbot/main.py --config newsbot/configs/medical.json
-          python newsbot/main.py --config newsbot/configs/AIinterview.json
-          python newsbot/main.py --config newsbot/configs/kosodate_kohoku.json
+          python newsbot/main.py --config configs/medical.json
+          python newsbot/main.py --config configs/AIinterview.json
+          python newsbot/main.py --config configs/kosodate_kohoku.json
 
       - name: Commit seen history
         run: |
