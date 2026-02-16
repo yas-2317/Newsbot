@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # JST 08:07 = UTC 23:07（前日）
-    - cron: "10 23 * * *"
+    - cron: "7 23 * * *"
 
 permissions:
   contents: write
@@ -16,7 +16,6 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,30 +25,29 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install dependencies (repo root)
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run digests (medical / AIinterview / kosodate)
+      - name: Run digests
         env:
-          # Slack
           SLACK_WEBHOOK_MEDICAL_URL: ${{ secrets.SLACK_WEBHOOK_MEDICAL_URL }}
           SLACK_WEBHOOK_AIINTERVIEW_URL: ${{ secrets.SLACK_WEBHOOK_AIINTERVIEW_URL }}
-          # LINE
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_TO: ${{ secrets.LINE_TO }}
         run: |
-          python main.py --config configs/medical.json
-          python main.py --config configs/AIinterview.json
-          python main.py --config configs/kosodate_kohoku.json
+          python newsbot/main.py --config newsbot/configs/medical.json
+          python newsbot/main.py --config newsbot/configs/AIinterview.json
+          python newsbot/main.py --config newsbot/configs/kosodate_kohoku.json
 
       - name: Commit seen history
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add -A seen_urls || true
+          # seen が newsbot/seen_urls にある前提
+          git add -A newsbot/seen_urls || true
           if git diff --cached --quiet; then
             echo "No seen updates."
           else
